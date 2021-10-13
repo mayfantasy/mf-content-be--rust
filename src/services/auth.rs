@@ -1,8 +1,7 @@
-use crate::routes::loginRoutes::IBasicAccountInfo;
-use crate::routes::loginRoutes::{ILoginPayload, ITokenPayload};
+use crate::types::auth_types::{IBasicAccountInfo, IEmailPayload, ILoginPayload};
 use tokio::time::{sleep, Duration};
 
-pub async fn getAccountByEmailAndPassword(user: &ILoginPayload) -> IBasicAccountInfo {
+pub async fn get_account_by_email_and_password(user: &ILoginPayload) -> IBasicAccountInfo {
     // Print input
     println!("The user's email is {}.", user.email);
     println!("The user's password is {}.", user.password);
@@ -18,17 +17,17 @@ pub async fn getAccountByEmailAndPassword(user: &ILoginPayload) -> IBasicAccount
     }
 }
 
-pub async fn getAccountByEmail(payload: &ITokenPayload) -> IBasicAccountInfo {
+pub async fn get_account_by_email(payload: &IEmailPayload) -> IBasicAccountInfo {
     // Print input
-    println!("The user's token is {}.", payload.token);
+    println!("The user's email is {}.", payload.email);
 
     // Sleep 3s
     sleep(Duration::from_millis(3000)).await;
 
     // Return account info
     IBasicAccountInfo {
-        email: String::from("hans@mayfantasy.com"),
+        email: String::from(payload.email.to_string()),
         username: String::from("hansknowyou"),
-        tier: 1,
+        tier: 3,
     }
 }

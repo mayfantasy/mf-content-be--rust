@@ -1,2 +1,2 @@
-#[path = "./login.rs"]
-pub mod loginServices;
+#[path = "./auth.rs"]
+pub mod auth_services;

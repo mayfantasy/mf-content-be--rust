@@ -1,12 +1,6 @@
-use chrono::{DateTime, TimeZone, Utc};
-use hmac::{Hmac, NewMac};
-use jsonwebtoken::{decode, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation};
+use crate::types::auth_types::ILoginPayload;
+use jsonwebtoken::{decode, encode, DecodingKey, EncodingKey, Header, Validation};
 use serde::{Deserialize, Serialize};
-use sha2::Sha256;
-use std::collections::BTreeMap;
-use std::io;
-
-use crate::routes::loginRoutes::ILoginPayload;
 
 #[derive(Serialize, Deserialize)]
 pub struct Claims {
